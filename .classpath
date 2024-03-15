@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Proj0403TipCalculator/src"/>
+	<classpathentry kind="src" path="Proj0701ContactList/src"/>
+	<classpathentry kind="src" path="Proj0702GradeConverter/src"/>
+	<classpathentry kind="src" path="Proj0704DiceRoller/src"/>
+	<classpathentry kind="output" path="Proj0403TipCalculator/bin"/>
+</classpath>
