@@ -44,14 +44,14 @@ public class PrsConsoleApp {
 
 		String choice = "y";
 
-		System.out.println("Users:");
-		System.out.println("=================");
-		System.out.println(u1);
-		System.out.println(u2.toString());
-		System.out.println("=================");
-		System.out.println("Request:");
-		System.out.println("=================");
-		System.out.println(r1);
+//		System.out.println("Users:");
+//		System.out.println("=================");
+//		System.out.println(u1);
+//		System.out.println(u2.toString());
+//		System.out.println("=================");
+//		System.out.println("Request:");
+//		System.out.println("=================");
+//		System.out.println(r1);
 
 		while (!command.equalsIgnoreCase(COMMAND_EXIT)) {
 			command = commandPrompt();
@@ -65,7 +65,11 @@ public class PrsConsoleApp {
 				addUsers(usersList);
 				break;
 			case COMMAND_GET:
-				getUsers(usersList);
+				User u = getUsers(usersList);
+				if (u != null)
+					System.out.println(u);
+				else
+					System.out.println("Invalid id entered.");
 				break;
 
 		
@@ -82,10 +86,7 @@ public class PrsConsoleApp {
 		System.out.println("Goodbye!");
 	}
 
-	private static void getUsers(List<User> usersList) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	private static String commandPrompt() {
 
@@ -105,11 +106,11 @@ public class PrsConsoleApp {
 		System.out.println("----------------------");
 
 		// setting first item to 1, then incrementing +1 for rest of items in list
-		for (int i = 1; i <= users.size(); i++) {
+		for (User u: users) {
 
 			// printing new item number in association to position in list
 			// have to do (i - 1) since we set first item to 1 in the for loop parameter
-			System.out.println(i + ". " + users.get(i - 1));
+			System.out.println(u);
 
 		}
 	}
@@ -133,17 +134,21 @@ public class PrsConsoleApp {
 		
 	}
 
-	private static void getUsers(List<User> users, int userId) {
-	   
-		for (int i = 1; i <= users.size(); i++)
-			System.out.println(i + ". " + users.get(i - 1));
+	private static User getUsers(List<User> users) {
+	   System.out.println("Get user by ID:");
 		
-		int userNumber = Console.getInt("Enter the number of the user you wish to view: ");
 		
-		for (int i = 1; i <= users.size(); i++) {
-		System.out.println(users.get(userNumber - 1));
+		int userId = Console.getInt("Enter the idNumber of the user you wish to view: ", 0, Integer.MAX_VALUE);
+		
+		User user = null;
+		
+		for (User u: users) {
+			if (u.getId() == userId) {
+				user = u;
+			}
 		
 		}
+		return user;
 	}
 	
 	
